@@ -1,0 +1,16 @@
+void PrintReverse(Node *node)
+
+{
+
+    if(node == NULL)
+
+        return;
+
+    
+PrintReverse(node->right);
+
+    printf("%d ",node->data);
+
+    PrintReverse(node->left);
+
+}

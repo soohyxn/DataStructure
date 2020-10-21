@@ -1,0 +1,120 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+#include <stdbool.h>
+#include <math.h>
+#define SEPARATOR "#<ab@17943918#@>#"
+
+typedef struct _node {
+    int data;
+    struct _node *left;
+    struct _node *right;
+} Node;
+
+typedef struct _tree {
+    Node *root;
+} Tree;
+
+void Insert(Tree *tree, int data) {
+
+	Node *newNode = (Node*)malloc(sizeof(Node));
+	newNode->data = data;
+	newNode->right = NULL;
+	newNode->left = NULL;
+
+	if (tree->root == NULL) {
+		tree->root = newNode;
+	}
+
+	else {
+
+		Node *curr = tree->root;
+
+		while (1)
+		{
+			if (newNode->data < curr->data) {
+				if (curr->left == NULL) {
+					curr->left = newNode;
+					break;
+				}
+				curr = curr->left;
+			}
+			else {
+				if (curr->right == NULL) {
+					curr->right = newNode;
+					break;
+				}
+				curr = curr->right;
+			}
+
+		}
+	}
+}
+
+void PrintReverse(Node *node)
+{
+    if(node == NULL)
+        return;
+    
+    PrintReverse(node->right);
+    printf("%d ",node->data);
+    PrintReverse(node->left);
+}
+
+
+int main() {
+   {
+    Tree t;
+    t.root = NULL;
+    Insert(&t, 3);
+Insert(&t, 6);
+Insert(&t, 1);
+Insert(&t, 12);
+PrintReverse(t.root);;
+   }
+    printf("%s\n", SEPARATOR);   {
+    Tree t;
+    t.root = NULL;
+    Insert(&t, 1);
+Insert(&t, 2);
+Insert(&t, 5);
+Insert(&t, 10);
+PrintReverse(t.root);;
+   }
+    printf("%s\n", SEPARATOR);   {
+    Tree t;
+    t.root = NULL;
+    Insert(&t, 9);
+Insert(&t, 7);
+Insert(&t, 4);
+Insert(&t, 1);
+PrintReverse(t.root);;
+   }
+    printf("%s\n", SEPARATOR);   {
+    Tree t;
+    t.root = NULL;
+    Insert(&t, 3);
+Insert(&t, 7);
+Insert(&t, 2);
+Insert(&t, 11);
+Insert(&t, 9);
+PrintReverse(t.root);;
+   }
+    printf("%s\n", SEPARATOR);   {
+    Tree t;
+    t.root = NULL;
+    Insert(&t, 10);
+Insert(&t, 5);
+Insert(&t, 6);
+Insert(&t, 1);
+Insert(&t, 16);
+Insert(&t, 9);
+Insert(&t, 13);
+Insert(&t, 11);
+Insert(&t, 8);
+Insert(&t, 7);
+PrintReverse(t.root);;
+   }
+        return 0;
+}

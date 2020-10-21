@@ -1,0 +1,15 @@
+void LConcat(List *plist1, List *plist2)
+
+{
+    
+	if(plist1->head == NULL)
+        
+		plist1->head = plist2->head;
+    
+	else
+        
+		plist1->tail->next = plist2->head;
+    
+	plist1->tail = plist2->tail;
+
+}
